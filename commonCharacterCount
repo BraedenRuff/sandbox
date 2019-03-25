@@ -1,0 +1,22 @@
+//checks if the first index of the first string matches any of character of the second string, then removes that letter from both and calls
+//the function again with new strings without the letter. Adds one if it removed a letter from both (because that means it's common).
+
+int commonCharacterCount(string s1, string s2) {
+    if (s1 == "") {
+        return 0;
+    }
+    else {
+        for (int i = 0; i < s2.Length; i++) {
+            if (s1[0] == s2[i]) {
+                if (i != s2.Length-1)
+                {
+                    return commonCharacterCount(s1.Substring(1,s1.Length-1), s2.Substring(0, i) + s2.Substring(i+1, s2.Length-i-1)) + 1;
+                }
+                else {
+                    return commonCharacterCount(s1.Substring(1,s1.Length-1), s2.Substring(0,i)) + 1;
+                }
+            }
+        }
+    }
+    return commonCharacterCount(s1.Substring(1,s1.Length-1), s2);
+}
