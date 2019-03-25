@@ -1,0 +1,35 @@
+string[] allLongestStrings(string[] inputArray) {
+    int len = inputArray.Max(_ => _.Length);
+    return inputArray.Where(_ => _.Length == len);
+}
+
+
+
+
+
+
+
+//longer way
+string[] allLongestStrings(string[] inputArray) {
+    int longestStringLength = 0;
+    int newArrayLength = 0;
+    for(int i = 0; i < inputArray.Length; i++) {
+        if (inputArray[i].Length >= longestStringLength) {
+            longestStringLength = inputArray[i].Length;
+        }
+    }
+    for(int i = 0; i < inputArray.Length; i++) {
+        if (inputArray[i].Length == longestStringLength) {
+             newArrayLength++;
+        }
+    }
+    string[] returnStrings = new string[newArrayLength];
+    int temp = 0;
+    for(int i = 0; i < inputArray.Length; i++) {
+        if (inputArray[i].Length == longestStringLength) {
+            returnStrings[temp] = inputArray[i];
+            temp++;
+        }
+    }
+    return returnStrings;
+}
