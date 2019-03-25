@@ -1,0 +1,9 @@
+//simple check that returns true if a string is a palindrome (same word backwards as it is forwards like racecar), and false if it isn't 
+
+bool checkPalindrome(string inputString) 
+{
+    char[] first = inputString.ToCharArray();
+    Array.Reverse(first);
+    
+    return new string(first).Equals(inputString);
+}
