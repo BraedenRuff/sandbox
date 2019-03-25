@@ -1,0 +1,41 @@
+//uses -1 to indicate this part stays in place
+
+int[] sortByHeight(int[] a)
+        {
+            bool[] treeLocations = new bool[a.Length]; 
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] == -1)
+                {
+                    treeLocations[i] = true;
+                }
+            }
+            Array.Sort(a); 
+            
+            int[] returnArray = new int[a.Length];
+            int tempIndex = 0;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] != -1)
+                {
+                    returnArray[tempIndex] = a[i];
+                    tempIndex++;
+                }
+            }
+            
+            //returnArray now an ascending sorted array of the input "a" except no -1s and 0s at the end
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (treeLocations[i] == true)
+                {
+                    for (int j = returnArray.Length - 1; j > i ; j--)
+                    {
+                        returnArray[j] = returnArray[j - 1]; 
+                    }
+                    returnArray[i] = -1;
+                }
+            }
+
+            return returnArray;
+        }
