@@ -1,0 +1,25 @@
+string reverseInParentheses(string inputString)
+        {
+
+            string reversedString = "";
+
+            for (int i = 0; i < inputString.Length; i++)
+            {
+                if (inputString[i].ToString() == ")") //i continues from start of string until reaches the end bracket
+                {
+                    for (int j = i-1; j >= 0; j--)
+                    {
+                        if (inputString[j].ToString() == "(") //backtracks until it finds start bracket 
+                        {
+                            return reverseInParentheses(inputString.Substring(0, j) + reversedString + 
+                            inputString.Substring(i + 1, inputString.Length - i-1)); 
+                        }
+                        else
+                        {
+                            reversedString += inputString[j];
+                        }
+                    }
+                }
+            }
+            return inputString;
+        }
