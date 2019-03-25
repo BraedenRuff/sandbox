@@ -1,0 +1,14 @@
+//does what the title says assuming each element is greater than or equal to -1000 and less than or equal to +1000
+
+int adjacentElementsProduct(int[] inputArray)
+{
+    int highestProd = -1000000; //constraints are -1000 <= x <= 1000
+    for (int i = 0; i < inputArray.Length-1; i++)
+    {
+        if (inputArray[i] * inputArray[i+1] > highestProd)
+        {
+            highestProd = inputArray[i] * inputArray[i + 1];
+        }
+    }
+    return highestProd;
+}
