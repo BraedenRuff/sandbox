@@ -1,0 +1,27 @@
+bool isLucky(int n)
+        {
+            int numDigits = n.ToString().Length;
+            string firstHalf;
+            string secondHalf;
+            if (numDigits % 2 == 0) //if it has an odd number of digits, skip middle number
+            {
+                firstHalf = n.ToString().Substring(0, numDigits / 2);
+                secondHalf = n.ToString().Substring(numDigits / 2, numDigits / 2);
+            }
+            else
+            {
+                firstHalf = n.ToString().Substring(0, numDigits / 2);
+                secondHalf = n.ToString().Substring(numDigits / 2 + 1, numDigits / 2);
+            }
+
+            int firstHalfSum = 0;
+            int secondHalfSum = 0;
+
+            for (int i = 0; i < numDigits / 2; i++)
+            {
+                //-48 to transform from char to int
+                firstHalfSum += (int)firstHalf[i] - 48;
+                secondHalfSum += (int)secondHalf[i] - 48;
+            }
+            return firstHalfSum == secondHalfSum;
+        }
