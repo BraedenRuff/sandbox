@@ -1,0 +1,45 @@
+/*Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an non-negative integer size. 
+Since he likes to make things perfect, he wants to arrange them from smallest to largest so that each statue will be bigger than the 
+previous one exactly by 1. He may need some additional statues to be able to accomplish that. Help him figure out the minimum number 
+of additional statues needed.*/
+
+//more efficient way
+int makeArrayConsecutive2(int[] statues) {
+    return statues.Max() - statues.Min() - statues.Length + 1;
+}
+
+
+
+
+//initial way
+int makeArrayConsecutive2(int[] statues) {
+    int smallestInt = statues[0];
+    int largestInt = statues[0];
+    
+    for (int i = 0; i < statues.Length; i++) {
+        if (statues[i] > largestInt) {
+            largestInt = statues[i];
+        }
+        else if (statues[i] < smallestInt) {
+            smallestInt = statues[i];
+        }
+    }
+    
+    int numStatuesNeeded = 0;
+    for (int i = smallestInt + 1; i < largestInt; i++) {
+        bool found = false;
+        for (int j = 0; j < statues.Length; j++) {
+            if (statues[j] == i) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            numStatuesNeeded++;
+        }
+    }
+    
+    return numStatuesNeeded;
+}
+
+
