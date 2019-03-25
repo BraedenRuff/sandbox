@@ -1,5 +1,16 @@
 //uses -1 to indicate this part stays in place
 
+int[] sortByHeight(int[] a) {
+    int[] people = a.Where(p => p >= 0).OrderBy(p => p).ToArray();
+    int i = 0;
+    
+    return a.Select(p => p >= 0 ? people[i++] : -1);
+}
+
+
+
+
+//without linq
 int[] sortByHeight(int[] a)
         {
             bool[] treeLocations = new bool[a.Length]; 
