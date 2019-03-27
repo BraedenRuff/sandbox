@@ -1,0 +1,27 @@
+bool areSimilar(int[] a, int[] b) {
+    int numDifElements = 0;
+    int firstWrongIndex = -1;
+    bool swapValid = false;
+    for (int i = 0; i < a.Length; i++) {
+        if (a[i] != b[i]) {
+            numDifElements++;
+            if (firstWrongIndex == -1) {
+                firstWrongIndex = i;
+            }
+            else {
+                if (a[i] == b[firstWrongIndex] && b[i] == a[firstWrongIndex]) {
+                    swapValid = true;
+                }
+            }
+        }
+    }
+    if (numDifElements == 0) {
+        return true;
+    }
+    if (numDifElements == 2) {
+        if (swapValid) {
+            return true;
+        }
+    }
+    return false;
+}
