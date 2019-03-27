@@ -1,0 +1,14 @@
+string[] addBorder(string[] picture) {
+    string[] borderedPicture = new string[picture.Length+2];
+    int width = picture[0].Length + 2; //because guaranteed strings of equal length;
+    string lineOfAsterisks = "";
+    for (int i = 0; i < width; i++) {
+        lineOfAsterisks += "*";
+    }
+    for (int i = 0; i < picture.Length; i++) {
+        borderedPicture[i+1] = "*" + picture[i] + "*";
+    }
+    borderedPicture[0] = lineOfAsterisks;
+    borderedPicture[borderedPicture.Length-1] = lineOfAsterisks;
+    return borderedPicture;
+}
