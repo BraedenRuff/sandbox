@@ -1,0 +1,11 @@
+int arrayChange(int[] inputArray) {
+    int numIncreases = 0;
+    for (int i = 1; i < inputArray.Length; i++) {
+        if (inputArray[i] <= inputArray[i-1]){
+            int increaseBy = inputArray[i-1] - inputArray[i] + 1;
+            inputArray[i] += increaseBy;
+            numIncreases += increaseBy;
+        }
+    }
+    return numIncreases;
+}
