@@ -1,4 +1,18 @@
 string[] addBorder(string[] picture) {
+    string[] stars = new string[] { new string('*', picture[0].Length + 2) }; //stars is a single line of stars
+    return stars.Concat(picture.Select(s => "*" + s + "*"))
+        .Concat(stars) //second line of stars
+        .ToArray();
+            
+}
+
+
+
+
+
+
+//without linq
+string[] addBorder(string[] picture) {
     string[] borderedPicture = new string[picture.Length+2];
     int width = picture[0].Length + 2; //because guaranteed strings of equal length;
     string lineOfAsterisks = "";
