@@ -1,0 +1,18 @@
+int[][] boxBlur(int[][] image) {
+    int width = image[0].Length;
+    int height = image.Length;
+    
+    int[][] returnImage = new int[height-2][];
+    for (int i = 0; i < height - 2; i++) {
+        returnImage[i] = new int[width-2];
+    }
+    for (int i = 1; i < height - 1; i++) {
+        for (int j = 1; j < width - 1; j++) {
+            int sum = image[i-1][j-1] + image[i-1][j] + image[i-1][j+1] +
+                image[i][j-1] + image[i][j] + image[i][j+1] +
+                image[i+1][j-1] + image[i+1][j] + image[i+1][j+1];
+            returnImage[i-1][j-1] = sum / 9;
+        }
+    }
+    return returnImage;
+}
