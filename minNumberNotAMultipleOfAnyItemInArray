@@ -1,0 +1,28 @@
+int avoidObstacles(int[] inputArray) {
+    int currentJump = 2;
+    while (true) {
+        for (int i = 0; i < inputArray.Length; i++) {
+            if (inputArray[i] % currentJump == 0) {
+                break;
+            }
+            if (i+1 == inputArray.Length) {
+                return currentJump;
+            }
+        }
+        currentJump++;
+    }
+}
+
+
+
+
+
+
+//linq version
+int avoidObstacles(int[] inputArray) {
+    int n = 2;
+    while (inputArray.Any(_ => _ % n < 1)) {
+        n++;
+    }
+    return n;
+}
