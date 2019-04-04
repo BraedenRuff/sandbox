@@ -1,0 +1,11 @@
+bool evenDigitsOnly(int n) {
+    int count = n.ToString().Length;
+    while(count > 0) {
+        if ((n % 10) % 2 == 1) {
+            return false;
+        }
+        n/=10;
+        count--;
+    }
+    return true;
+}
