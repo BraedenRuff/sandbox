@@ -1,0 +1,104 @@
+bool stringsRearrangement(string[] inputArray)
+        {
+            for (int z = 0; z < inputArray.Length; z++)
+            {
+                for (int i = 0; i < inputArray.Length; i++)
+                {
+                    if (differsByOneCharacter(inputArray[z], inputArray[i]))
+                    {
+                        string[] tempArray = new string[inputArray.Length - 1];
+                        {
+                            tempArray[0] = inputArray[i];
+                            for (int j = 0; j < inputArray.Length; j++)
+                            {
+                                if (j == i)
+                                {
+                                    continue;
+                                }
+                                else if (j == z)
+                                {
+                                    continue;
+                                }
+                                if (j < i && j < z)
+                                {
+                                    tempArray[j + 1] = inputArray[j];
+                                }
+                                else if(j >= i && j >= z)
+                                {
+                                    tempArray[j - 1] = inputArray[j];
+                                }
+                                else if(j >= i || j >= z && (j >= i != j >= z))
+                                {
+                                    tempArray[j] = inputArray[j];
+                                }
+                            }
+                            if (helperRearranger(tempArray))
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+bool helperRearranger(string[] inputArray)
+{
+    if (inputArray.Length == 1)
+    {
+        return true;
+    }
+    for (int i = 0; i < inputArray.Length; i++)
+    {
+        if (differsByOneCharacter(inputArray[0], inputArray[i]))
+        {
+            string[] tempArray = new string[inputArray.Length - 1];
+            {
+                for (int j = 1; j < inputArray.Length; j++)
+                {
+                    tempArray[0] = inputArray[i];
+                    if (j == i)
+                    {
+                        continue;
+                    }
+                    else if (j < i)
+                    {
+                        tempArray[j] = inputArray[j];
+                    }
+                    else
+                    {
+                        tempArray[j - 1] = inputArray[j];
+                    }
+                }
+                if (helperRearranger(tempArray))
+                {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+    
+//could have done this in linq would have been better
+bool differsByOneCharacter(string s1, string s2)
+{
+    int chancesLeft = 2;
+    for (int i = 0; i < s1.Length; i++)
+    {
+        if (s1[i] != s2[i])
+        {
+            chancesLeft--;
+        }
+    }
+    if (chancesLeft == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
