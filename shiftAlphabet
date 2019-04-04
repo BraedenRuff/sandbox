@@ -1,0 +1,3 @@
+string alphabeticShift(string inputString) {
+    return string.Concat(inputString.Select(_ => ++_ > 'z' ? 'a' : _));
+}
