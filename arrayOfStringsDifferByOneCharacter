@@ -102,3 +102,17 @@ bool differsByOneCharacter(string s1, string s2)
         return false;
     }
 }
+
+//someone elses solution:
+/*
+bool stringsRearrangement(string[] a) => a.Any(x => sub(a, x));
+bool sub(string[] a, string b)
+    => !a.Any() // Empty?
+        || a.Where((x, i) =>
+            x.Where((y, j) => y != b[j]).Count() == 1 // Only 1 diff chars
+            && sub( // Check sub array
+                a.Where((o, j) => i != j).ToArray(), // Except diff one
+                x
+            ) // All elems diff is 1?
+        ).Any();
+*/
