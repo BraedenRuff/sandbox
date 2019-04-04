@@ -1,0 +1,3 @@
+bool variableName(string name) {
+    return name.All(c => Char.IsLetterOrDigit(c) || c.Equals('_')) && !Char.IsDigit(name[0]);
+}
