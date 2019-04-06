@@ -1,0 +1,14 @@
+char firstDigit(string inputString) {
+    return inputString.First(char.IsDigit);
+}
+
+char firstDigit(string inputString) {
+    int index = 0;
+    while (index != inputString.Length) {
+        if (Char.IsDigit(inputString[index])){
+            break;
+        }
+        index++;
+    }
+    return inputString[index];
+}
