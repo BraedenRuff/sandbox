@@ -1,0 +1,3 @@
+int[] extractEachKth(int[] inputArray, int k) {
+    return inputArray.Where((x, i) => (i + 1) % k != 0).ToArray();
+}
