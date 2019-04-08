@@ -1,0 +1,26 @@
+int arrayMaxConsecutiveSum(int[] inputArray, int k)
+        {
+            int max = 0;
+            int tempMax = 0;
+            for (int i = 0; i < k; i++)
+            {
+                tempMax += inputArray[0 + i];
+            }
+            max = tempMax;
+            for (int i = 0; i < inputArray.Length - k; i++)
+            {
+                tempMax -= inputArray[i];
+                tempMax += inputArray[i + k];
+                if (tempMax > max)
+                {
+                    max = tempMax;
+                }
+            }
+            return max;
+        }
+        
+//less efficient but in linq
+int arrayMaxConsecutiveSum(int[] inputArray, int k) {
+    return inputArray.Where((x, i) => inputArray.Length - k >= i)
+                           .Select((x, i) => inputArray.Skip(i).Take(k).Sum()).ToArray().Max(); 
+}
