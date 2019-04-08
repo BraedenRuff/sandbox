@@ -1,0 +1,9 @@
+int differentSymbolsNaive(string s)
+{
+    if (s.Length == 0)
+    {
+        return 0;
+    }
+    string remainingChars = new string (s.Where(x => x != s[0]).ToArray());
+    return differentSymbolsNaive(remainingChars) + 1;
+}
