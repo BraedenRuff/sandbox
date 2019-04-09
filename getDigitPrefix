@@ -1,0 +1,12 @@
+string longestDigitsPrefix(string inputString) {
+    int index = 0;
+    string prefix = "";
+    while (char.IsDigit(inputString[index])){
+        prefix += inputString[index];
+        index++;
+        if (index == inputString.Length){
+            break;
+        }
+    }
+    return prefix;
+}
