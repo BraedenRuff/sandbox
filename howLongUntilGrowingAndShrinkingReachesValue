@@ -1,0 +1,18 @@
+int growingPlant(int upSpeed, int downSpeed, int desiredHeight) {
+    int days = 1;
+    int height = upSpeed;
+    while (height < desiredHeight) {
+        height += upSpeed-downSpeed;
+        days++;
+    }
+    return days;
+}
+
+
+//more elegant
+int growingPlant(int upSpeed, int downSpeed, int desiredHeight) {
+    if (desiredHeight <= upSpeed) {
+      return 1;
+    }
+    return Math.ceil((desiredHeight - upSpeed) / (upSpeed - downSpeed)) + 1
+}
