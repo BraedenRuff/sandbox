@@ -1,0 +1,24 @@
+string buildPalindrome(string st)
+{
+    string innerPalin = st;
+    while (innerPalin.Length != 0)
+    {
+        if (isPalindrome(innerPalin))
+        {
+            break;
+        }
+        innerPalin = innerPalin.Substring(1);
+    }
+    string returnString = st;
+    for (int i = st.Length - innerPalin.Length-1; i >= 0; i--)
+    {
+        returnString += st[i];
+    }
+    return returnString;
+    
+}
+
+static bool isPalindrome(string s)
+{
+    return new string(s.Reverse().ToArray()) == s;
+}
