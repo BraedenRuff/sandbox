@@ -1,0 +1,5 @@
+int electionsWinners(int[] votes, int k) {
+    int mostVotesSoFar = votes.Max();
+    return  votes.Where(x => mostVotesSoFar < x + k || (k == 0 && x == mostVotesSoFar)).Count() - 
+        (votes.Where(x => k == 0 && x == mostVotesSoFar).Count() == 1 ? 0 : votes.Where(x => k == 0 && x == mostVotesSoFar).Count());
+}
