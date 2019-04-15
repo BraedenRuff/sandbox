@@ -12,3 +12,7 @@ bool isMAC48Address(string s)
     
     return true;
 }
+
+
+
+//note learn regex
