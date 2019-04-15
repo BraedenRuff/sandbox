@@ -1,0 +1,14 @@
+bool isMAC48Address(string s)
+{
+    string[] l = s.Split('-');
+    
+    if(l.Length != 6)
+        return false;
+    
+    foreach(string c in l)
+        for(int i = 0; i <= 1; i++)
+            if(!(c.Length == 2 && ((c[i] >= '0' && c[i] <= '9') || (c[i] >= 'A' && c[i] <= 'F'))))
+                return false;
+    
+    return true;
+}
