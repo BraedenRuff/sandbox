@@ -1,0 +1,23 @@
+int chessKnight(string cell) {
+    int result = 0;
+    if (cell[0] - 96 == 1 || cell[0] - 96 == 8) {
+        result += 2;
+    }
+    else if (cell[0] - 96 == 2 || cell[0] - 96 == 7) {
+        result += 3;
+    }
+    else {
+        result += 4;
+    }
+    if (cell[1] - 48 == 1 || cell[1] - 48 == 8) {
+        
+    }
+    else if (cell[1] - 48 == 2 || cell[1] - 48 == 7) {
+        result += result/2;
+    }
+    else {
+        result += result;
+    }
+    return result;
+    
+}
