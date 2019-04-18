@@ -1,0 +1,32 @@
+string lineEncoding(string s)
+{
+    string temp = s[0].ToString();
+    int index = 1;
+    string returnString = "";
+    while (index < s.Length)
+    {
+        if (temp[0] != s[index])
+        {
+            if (temp.Length == 1)
+            {
+                returnString += temp;
+            }
+            else
+            {
+                returnString += temp.Length + temp[0].ToString();
+            }
+            temp = "";
+        }
+        temp += s[index];
+        index++;
+    }
+    if (temp.Length == 1)
+    {
+        returnString += temp;
+    }
+    else
+    {
+        returnString += temp.Length + temp[0].ToString();
+    }
+    return returnString;
+}
