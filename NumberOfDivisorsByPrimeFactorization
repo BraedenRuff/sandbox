@@ -1,18 +1,16 @@
 public static int FindNumDivisorsPrimeFactor(int num, List<int> primelist)
         {
+        
             //discovered that if you prime factorize a number (say like 36 = 2^2 * 3^2, or like 1800 = 2^3 * 3^2 * 5^2), 
             //then the number of factors is the exponent of each different prime factor multiplied together 
             //(in these cases, 3 * 3 = 9 [because it's a square it's odd], and 4 * 3 * 3 = 36 (checked by hand it's right)
+            
             int divisors = 1;
             int exponent;
             int remain = num;
 
             for (int i = 0; i < primelist.Count; i++)
             {
-                if (primelist[i] * primelist[i] > num)
-                {
-                    return divisors * 2;
-                }
                 exponent = 1;
                 while (remain % primelist[i] == 0)
                 {
@@ -28,7 +26,7 @@ public static int FindNumDivisorsPrimeFactor(int num, List<int> primelist)
 
             return divisors;
         }
-//non-optimized prime finder        
+//non-optimized prime finder       
 public static List<int> FindPrimes(int num)
         {
             List<int> primes = new List<int>();
